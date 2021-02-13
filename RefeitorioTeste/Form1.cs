@@ -35,7 +35,7 @@ namespace RefeitorioTeste
                     painelPrincipal.Width = 204;
                     butInicio.Location = new Point(100, 164); // y constante = 164 e x = 3 posição inicial
                     butPratos.Location = new Point(100, 343); // y constante = 343 e x = 3 posição inicial
-                    butCarteira.Location = new Point(100, 531); // y constante = 531 e x = 3 posição inicial
+                    butBebidas.Location = new Point(100, 515); // y constante = 531 e x = 3 posição inicial
                     //g2painelPratos.Visible = true;
                     painelPrincipal.BringToFront();
                     Expanded = true; //o Expanded é a expansao para a direita (Expanded = true significa que está expandido para a direita)
@@ -51,29 +51,82 @@ namespace RefeitorioTeste
                     guna2Transition1.Show(painelPrincipal);
                     butInicio.Location = new Point(3, 164);
                     butPratos.Location = new Point(3, 343);
-                    butCarteira.Location = new Point(3, 531);
+                    butBebidas.Location = new Point(3, 515); //Bebidas, Sobremesas e Acompanhamentos
+                    butCarteira.Location = new Point(3, 677);
                     Expanded = false;
                 }
             }
         }
         private void butPratos_Click(object sender, EventArgs e)
         {
-            
+            g2painelBebidas.Visible = false;
             g2painelPratos.Visible = true; //quando clico no botão dos pratos, os tipos de pratos aparecem e os botoes iniciais/principais voltam à posição inicial
             butInicio.Location = new Point(3, 164);
             butPratos.Location = new Point(3, 343);
-            butCarteira.Location = new Point(3, 531);
+            butBebidas.Location = new Point(3, 515);
+            butCarteira.Location = new Point(3, 677);
             painelPrincipal.SendToBack();
-            painelCarnes.Visible = true; 
+            painelCarnes.Visible = true;
+        }
+        private void butCarne1_Click(object sender, EventArgs e)
+        {
+            if (painelCarnes.Visible == false)
+            {
+                painelPeixes.Visible = false;
+                painelCarnes.Visible = true;
+                painelVegetariano.Visible = false;
+            }
+            else
+            {
+                painelCarnes.Visible = true;
+                painelPeixes.Visible = false ;
+                painelVegetariano.Visible = false;
+            }
+        }
+        private void butPeixe1_Click(object sender, EventArgs e)
+        {
+            if (painelPeixes.Visible == false)
+            {
+                painelCarnes.Visible = true; // nao entendo bem
+                painelPeixes.Visible = true;
+                painelVegetariano.Visible = false;
+
+            }
+            else
+            {
+                painelPeixes.Visible = true;
+                painelCarnes.Visible = true;
+                painelVegetariano.Visible = false;
+            }
+        }
+        private void butVegetariano1_Click(object sender, EventArgs e)
+        {
+            if (painelVegetariano.Visible == false)
+            {
+                painelVegetariano.Visible = true;
+                painelCarnes.Visible = true;
+                painelPeixes.Visible = false;
+
+            }
+            else
+            {
+                painelVegetariano.Visible = true;
+                painelPeixes.Visible = false;
+                painelCarnes.Visible = false;
+            }
         }
         private void butInicio_Click(object sender, EventArgs e)
         {
             g2painelPratos.Visible = false;
             butInicio.Location = new Point(3, 164);
             butPratos.Location = new Point(3, 343);
-            butCarteira.Location = new Point(3, 531);
+            butBebidas.Location = new Point(3, 515);
+            butCarteira.Location = new Point(3, 677);
             painelCarnes.Visible = false;
+            painelPeixes.Visible = false;
+            painelVegetariano.Visible = false;
             g2painelPratos.Visible = false;
+            g2painelBebidas.Visible = false;
             painelPrincipal.SendToBack();
             Expanded = true;
         }
@@ -213,23 +266,122 @@ namespace RefeitorioTeste
         }
 
         private void userControl_FrangoChurrasco_Click(object sender, EventArgs e)
+        {//podia fzr aqui umas condições para conseguir remover as compras quando clicasse outra vez no produto mas ainda não sei aceder ao UserControl no forms
+            painelCompra1.Visible = true;
+            labelCompra1.Text = "Frango Churrasco";
+            labelCompra1.Visible = true;
+            labelMax1.Visible = true;
+            
+        }
+
+        private void butDelete1_Click(object sender, EventArgs e)
         {
-            UserControl UserControl1 = g2GradientButton_Valid;
-            UserControl1.g2GradientButton_Valid;
+            painelCompra1.Visible = false;
+            labelCompra1.Text = "";
+            labelCompra1.Visible = false;
         }
 
         private void userControl_CozidoPT_Click(object sender, EventArgs e)
         {
-
+            painelCompra1.Visible = true;
+            labelCompra1.Text = "Cozido à Portuguesa";
+            labelCompra1.Visible = true;
+            labelMax1.Visible = true;
         }
 
         private void userControl_Alcatra_Click(object sender, EventArgs e)
         {
-
+            painelCompra1.Visible = true;
+            labelCompra1.Text = "Alcatra";
+            labelCompra1.Visible = true;
+            labelMax1.Visible = true;
         }
 
-        private void userControl_AAAF_Click(object sender, EventArgs e)
+        private void userControl11_Click(object sender, EventArgs e) //Anho Assado com Arroz de Frango
         {
+            painelCompra1.Visible = true;
+            labelCompra1.Text = "Anho Assado com Arroz de Frango";
+            labelCompra1.Visible = true;
+            labelMax1.Visible = true;
+        }
+
+        private void userControl12_Click(object sender, EventArgs e)
+        {
+            painelCompra1.Visible = true;
+            labelCompra1.Text = "Corvina estufada com legumes";
+            labelCompra1.Visible = true;
+            labelMax1.Visible = true;
+        }
+
+        private void userControl13_Click(object sender, EventArgs e)
+        {
+            painelCompra1.Visible = true;
+            labelCompra1.Text = "Bacalhau à Braga";
+            labelCompra1.Visible = true;
+            labelMax1.Visible = true;
+        }
+
+        private void userControl14_Click(object sender, EventArgs e)
+        {
+            painelCompra1.Visible = true;
+            labelCompra1.Text = "Cantaril assado no forno com legumes";
+            labelCompra1.Visible = true;
+            labelMax1.Visible = true;
+        }
+
+        private void userControl15_Click(object sender, EventArgs e)
+        {
+            painelCompra1.Visible = true;
+            labelCompra1.Text = "Pescada à Portuguesa";
+            labelCompra1.Visible = true;
+            labelMax1.Visible = true;
+        }
+
+        private void userControl17_Click(object sender, EventArgs e)
+        {
+            painelCompra1.Visible = true;
+            labelCompra1.Text = "Húmus de beterraba";
+            labelCompra1.Visible = true;
+            labelMax1.Visible = true;
+        }
+
+        private void userControl18_Click(object sender, EventArgs e)
+        {
+            painelCompra1.Visible = true;
+            labelCompra1.Text = "Creme de cogumelos e queijo da ilha";
+            labelCompra1.Visible = true;
+            labelMax1.Visible = true;
+        }
+
+        private void userControl19_Click(object sender, EventArgs e)
+        {
+            painelCompra1.Visible = true;
+            labelCompra1.Text = "Facaccia pugliese";
+            labelCompra1.Visible = true;
+            labelMax1.Visible = true;
+        }
+
+        private void butBebidas_Click(object sender, EventArgs e)
+        {
+            painelCarnes.Visible = false;
+            painelPeixes.Visible = false;
+            painelVegetariano.Visible = false;
+            g2painelBebidas.Visible = true;
+            g2painelPratos.Visible = false;
+            butInicio.Location = new Point(3, 164);
+            butPratos.Location = new Point(3, 343);
+            butBebidas.Location = new Point(3, 515);
+            butCarteira.Location = new Point(3, 677);
+            painelPrincipal.SendToBack();
+            g2painelBebidas.Visible = true;
+            /*g2painelPratos.Visible = false;
+            g2painelBebidas.Visible = false;
+            butInicio.Location = new Point(3, 164);
+            butPratos.Location = new Point(3, 343);
+            butBebidas.Location = new Point(3, 515);
+            butCarteira.Location = new Point(3, 677);
+            painelPrincipal.SendToBack();
+            g2painelBebidas.BringToFront();*/
 
         }
     }

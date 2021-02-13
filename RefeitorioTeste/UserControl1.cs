@@ -13,6 +13,23 @@ namespace RefeitorioTeste
 {
     public partial class UserControl1 : UserControl
     {
+        //Ajudado por ZacharyPatten
+        public bool IsSelected //IsSelected é uma struct
+        {
+            get //quando IsSelected for chamado aquele valor "g2GradientButton_Valid.Visible;" vai ser-lhe retornado(SÓ QUANDO É CHAMADO) ao IsSelected
+            {
+                return g2GradientButton_Valid.Visible;
+            }
+            set 
+            {
+                g2GradientButton_Valid.Visible = value; //ganha o valor de false de IsSelected = !g2GradientButton_Valid.Visible; lá em baixo
+                g2panelborda_valido.Visible = value;
+            }
+
+        }
+        //IsSelected = false;
+        //ex: Console.WriteLine(IsSelected) a consola vai printar se o g2GrandientButton_Valid.Visible é true ou falso (se está visibel) (se setá selected ou nao)
+
         public UserControl1()
         {
             InitializeComponent();
@@ -33,8 +50,42 @@ namespace RefeitorioTeste
         por isso é que é necessário repetir o códio 2x para diferentes cliques.*/
         public void UserControl1_Click(object sender, EventArgs e)
         {
-           //Console.WriteLine(Name);
-            if (g2GradientButton_Valid.Visible == false)
+            foreach (Control control in Parent.Controls)
+            {
+                if (control is UserControl1 userControl1)
+                {
+                    userControl1.IsSelected = false;
+                }
+            }
+            IsSelected = !g2GradientButton_Valid.Visible; // = false e vai set o valor a "value" lá em cima
+            
+
+            //ALTERNATIVA - AJUDA PELO NYCK E ZACHARYPATTEN
+            /*IsSelected = !g2GradientButton_Valid.Visible;
+            foreach (Control control in Parent.Controls)  //para cada controlo dos controlos (2 controls, 1 para deifinir o tipo, outra para a variavel)
+            {
+                if (control is UserControl1 userControl1 && !ReferenceEquals(userControl1, this)) //polimorfismo de classes
+                {
+                    userControl1.IsSelected = false;
+                    userControl1.g2GradientButton_Valid.Visible = false;
+                    userControl1.g2panelborda_valido.Visible = false;
+                    
+                }
+            }
+            if (IsSelected == true)
+            {
+                g2GradientButton_Valid.Visible = true;
+                g2panelborda_valido.Visible = true;
+            }
+            else
+            {
+                g2GradientButton_Valid.Visible = false;
+                g2panelborda_valido.Visible = false;
+            }
+            //Console.WriteLine(g2GradientButton_Valid.Visible)
+            //Console.WriteLine(Name);
+
+            /*if (g2GradientButton_Valid.Visible == false) 
             {
                 g2GradientButton_Valid.Visible = true; 
                 g2panelborda_valido.Visible = true;
@@ -43,7 +94,7 @@ namespace RefeitorioTeste
             {
                 g2GradientButton_Valid.Visible = false; 
                 g2panelborda_valido.Visible = false;
-            }
+            }*/
         }
 
         private void g2panelborda_valido_Click(object sender, EventArgs e)
@@ -59,5 +110,7 @@ namespace RefeitorioTeste
                 g2panelborda_valido.Visible = false;
             }
         }
+
+
     }
 }
