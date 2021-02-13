@@ -384,5 +384,14 @@ namespace RefeitorioTeste
             g2painelBebidas.BringToFront();*/
 
         }
+
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    Form form = new Form();
+        //    PratosViewUserControl uc = new PratosViewUserControl();
+        //    uc.Dock = DockStyle.Fill;
+        //    form.Controls.Add(uc);
+        //    form.ShowDialog();
+        //}
     }
 }
