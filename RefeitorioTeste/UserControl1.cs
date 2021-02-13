@@ -27,10 +27,13 @@ namespace RefeitorioTeste
             }
 
         }
-        //IsSelected = false;
-        //ex: Console.WriteLine(IsSelected) a consola vai printar se o g2GrandientButton_Valid.Visible é true ou falso (se está visibel) (se setá selected ou nao)
 
-        public UserControl1()
+        public Guna.UI2.WinForms.Guna2Panel G2panelborda_valido => g2panelborda_valido;
+
+		//IsSelected = false;
+		//ex: Console.WriteLine(IsSelected) a consola vai printar se o g2GrandientButton_Valid.Visible é true ou falso (se está visibel) (se setá selected ou nao)
+
+		public UserControl1()
         {
             InitializeComponent();
         }
